@@ -100,10 +100,11 @@ void cmus_cb::work() {
       } else if (strncmp(line, "position ", 9) == 0) {
         cmus.curtime = line + 9;
         cmus.timeleft =
-            atoi(cmus.totaltime.c_str()) - atoi(cmus.curtime.c_str());
+            strtol(cmus.totaltime.c_str(), nullptr, 10) -
+	        strtol(cmus.curtime.c_str(), nullptr, 10);
         if (cmus.curtime.size() > 0) {
-          cmus.progress = static_cast<float>(atoi(cmus.curtime.c_str())) /
-                          atoi(cmus.totaltime.c_str());
+          cmus.progress = static_cast<float>(strtol(cmus.curtime.c_str(), nullptr, 10)) /
+                          strtol(cmus.totaltime.c_str(), nullptr, 10);
         } else {
           cmus.progress = 0;
         }
