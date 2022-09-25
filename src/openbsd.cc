@@ -483,12 +483,12 @@ void update_obsd_sensors() {
 }
 
 void parse_obsd_sensor(struct text_object *obj, const char *arg) {
-  if (!isdigit((unsigned char)arg[0]) || strtol(&arg[0], nullptr, 10) < 0 ||
-      strtol(&arg[0], nullptr, 10) > OBSD_MAX_SENSORS - 1) {
+  if (!isdigit((unsigned char)arg[0]) || atoi(&arg[0]) < 0 ||
+      atoi(&arg[0]) > OBSD_MAX_SENSORS - 1) {
     obj->data.l = 0;
     NORM_ERR("Invalid sensor number!");
   } else
-    obj->data.l = strtol(&arg[0], nullptr, 10);
+    obj->data.l = atoi(&arg[0]);
 }
 
 void print_obsd_sensors_temp(struct text_object *obj, char *p, int p_max_size) {
