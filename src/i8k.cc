@@ -93,7 +93,7 @@ int update_i8k(void) {
 static void print_i8k_fan_status(char *p, int p_max_size, const char *status) {
   static const char *status_arr[] = {"off", "low", "high", "error"};
 
-  int i = status ? atoi(status) : 3;
+  int i = status ? strtol(status, nullptr, 10) : 3;
   if (i < 0 || i > 3) i = 3;
 
   snprintf(p, p_max_size, "%s", status_arr[i]);

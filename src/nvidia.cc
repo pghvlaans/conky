@@ -428,7 +428,7 @@ int set_nvidia_query(struct text_object *obj, const char *arg,
   char *strbuf = strdup(arg);
   char *p = strrchr(strbuf, ' ');
   if (p && *(p + 1)) {
-    nvs->target_id = atoi(p + 1);
+    nvs->target_id = strtol(p + 1, nullptr, 10);
     if ((nvs->target_id > 0) || !strcmp(p + 1, "0")) {
       ilen = strlen(strbuf);
       ilen = ilen - strlen(p);
